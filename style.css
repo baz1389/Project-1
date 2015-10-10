@@ -37,19 +37,34 @@ h1 {
   border: 1px solid black;
 }
 
-.info {
+.play-again {
   height: 50px;
   width: 307px;
   margin: 0 auto;
   background-color: tan;
 }
 
-footer {
-  text-align: center;
-  margin: 0 auto;
+button {
+  position:relative;
+    top:33%;
+    left:39%;
 }
 
-footer ul{
-  text-align: center;
-  list-style-type: none
+.footer {
+  width: 200px;
+  height: 105px;
+  position: relative; left: 43.5%;
+}
+
+.contact-info {
+  position: ;
+  float: left;
+  position: relative; left: 10px;
+}
+
+li {
+  list-style-type: none;
+  display: inline;
+  padding: 1px;
+  position: relative; right: 48px;
 }
