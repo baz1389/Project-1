@@ -1,0 +1,55 @@
+body {
+  background: tan;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+.board {
+  height: 300px;
+  width: 307px;
+  margin: 0 auto;
+  align: center;
+}
+
+.left-col {
+  float: left;
+  background-color: orange;
+  text-align: center;
+}
+
+.middle-col{
+  float: left;
+  background-color: orange;
+  text-align: center;
+}
+
+.right-col{
+  float: left;
+  background-color: orange;
+}
+
+.box{
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+
+.info {
+  height: 50px;
+  width: 307px;
+  margin: 0 auto;
+  background-color: tan;
+}
+
+footer {
+  text-align: center;
+  margin: 0 auto;
+}
+
+footer ul{
+  text-align: center;
+  list-style-type: none
+}
