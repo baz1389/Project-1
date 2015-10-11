@@ -12,8 +12,8 @@
 
 var playerX = 'X';
 var playerO = 'O';
-var xWin;
-var oWin;
+var xWin; // = false;?
+var oWin; // = false;?
 
 
 
@@ -43,7 +43,7 @@ var checkVictory = function checkVictory () {
   (topLeft === centerMid && topLeft === botRight && (topLeft === 'X')) || //diagonal win
   (topRight === centerMid && topRight === botLeft && (topRight === 'X')) //diagonal win
   ) {
-    xWin = true;
+    //xWin = true?;
 
   } else if ((topLeft === topMid && topLeft === topRight && (topLeft === 'O')) || //top row wins
   (centerLeft === centerMid && centerLeft === centerRight && (centerLeft === 'O')) || //mid row wins
@@ -54,13 +54,19 @@ var checkVictory = function checkVictory () {
   (topLeft === centerMid && topLeft === botRight && (topLeft === 'O')) || //diagonal win
   (topRight === centerMid && topRight === botLeft && (topRight === 'O')) //diagonal win
   ) {
-    oWin = true;
+    //oWin = true?;
 
   } else { //tie logic here
-
+      if (((topLeft === "X") || (topLeft === "O")) && ((centerLeft === "X") ||
+      (centerLeft === "O")) && ((bOtLeft === "X") || (bOtLeft === "O")) && ((tOpMid === "X") ||
+      (tOpMid === "O")) && ((centerMid === "X") || (centerMid === "O")) && ((bOtMid === "X") ||
+      (bOtMid === "O")) && ((tOpRight === "X") || (tOpRight === "O")) && ((centerRight === "X") ||
+      (centerRight === "O")) && ((bOtRight === "X") || (bOtRight === "O"))) {
+        console.log("It's a tie!"); //use alert()?
+      }
   }
 
-}
+};
 
 //reset board
 
