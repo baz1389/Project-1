@@ -12,8 +12,8 @@
 
 var playerX = 'X';
 var playerO = 'O';
-var xWin; // = false;?
-var oWin; // = false;?
+var xWin = false;
+var oWin = false;
 
 
 
@@ -31,6 +31,9 @@ var botRight;
 
 
 //is there an X or O already in this square
+var boxCheck = function boxCheck() {
+  topleft = $('#top-left').html(); //checks html contents for ID = top-left
+}
 
 //check for victory
 var checkVictory = function checkVictory () {
@@ -43,7 +46,7 @@ var checkVictory = function checkVictory () {
   (topLeft === centerMid && topLeft === botRight && (topLeft === 'X')) || //diagonal win
   (topRight === centerMid && topRight === botLeft && (topRight === 'X')) //diagonal win
   ) {
-    //xWin = true?;
+    xWin = true;
 
   } else if ((topLeft === topMid && topLeft === topRight && (topLeft === 'O')) || //top row wins
   (centerLeft === centerMid && centerLeft === centerRight && (centerLeft === 'O')) || //mid row wins
@@ -54,7 +57,7 @@ var checkVictory = function checkVictory () {
   (topLeft === centerMid && topLeft === botRight && (topLeft === 'O')) || //diagonal win
   (topRight === centerMid && topRight === botLeft && (topRight === 'O')) //diagonal win
   ) {
-    //oWin = true?;
+    oWin = true;
 
   } else { //tie logic here
       if (((topLeft === "X") || (topLeft === "O")) && ((centerLeft === "X") ||
@@ -69,18 +72,13 @@ var checkVictory = function checkVictory () {
 };
 
 //reset board
+var resetBoard = function resetBoard() {
+  var topLeft = $('#topLeft').text(' ');
 
-//the game was a draw
+  xWin = false;
+  oWin = false;
 
-//shows the winner and resets the board using reset function
-
-
-
-
-
-
-
-
+};
 
 ///jQuery Logic///
 $(document).ready(function() {
