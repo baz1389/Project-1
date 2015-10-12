@@ -2,83 +2,48 @@
 
 ///Javascript Logic///
 
-
-//cell-0-0 to -0-2 are the left column from top to bottom
-//cell-1-0 to 1-2 are the center column from top to bottom
-//cell-2-0 to 2-2 are the right column from top to bottom
-// var gameBoard = ['cell-0-0', 'cell-1-0', 'cell-2-0',
-//                 'cell-0-1', 'cell-1-1', 'cell-2-1',
-//                 'cell-0-2', 'cell-1-2', 'cell-2-2']  //use version below??
-
 var playerX = 'X';
 var playerO = 'O';
-var xWin = false;
-var oWin = false;
 
+var gameBoard =
+[
+    [null, null, null], //[0][0], [0][1], [0][2]
+    [null, null, null], //[1][0], [1][1], [1][2]
+    [null, null, null]  //[2][0], [2][1], [2][2]
+];
 
+//set an index to X or O
 
-//variables that will hold the unique box IDs
-var topLeft;
-var topMid;
-var topRight;
-var centerLeft;
-var centerMid;
-var centerRight;
-var botLeft;
-var botMid;
-var botRight;
+var setSquare = function setSquare(player, row, col) {
+    checkerboard[row][col] = player;
+    return checkerboard;
+};
 
+//is there a X or O in this index
+var checkSquare = function checkSquare() {
 
+};
 
-//is there an X or O already in this square
-var boxCheck = function boxCheck() {
-  topleft = $('#top-left').html(); //checks html contents for ID = top-left
-}
 
 //check for victory
-var checkVictory = function checkVictory () {
-  if ((topLeft === topMid && topLeft === topRight && (topLeft === 'X')) || //top row wins
-  (centerLeft === centerMid && centerLeft === centerRight && (centerLeft === 'X')) || //mid row wins
-  (botLeft === botMid && botLeft === botRight && (botLeft === 'X')) || // bot row wins
-  (topLeft === centerLeft && topLeft === botLeft && (topLeft === 'X')) || //left col wins
-  (topMid === centerMid && topMid === botMid && (topMid === 'X')) || //mid col wins
-  (topRight === centerRight && topRight === botRight && (topRight === 'X')) || //right col wins
-  (topLeft === centerMid && topLeft === botRight && (topLeft === 'X')) || //diagonal win
-  (topRight === centerMid && topRight === botLeft && (topRight === 'X')) //diagonal win
-  ) {
-    xWin = true;
+var checkWinner = function checkWinner() {
+  for(var i = 0;) {
 
-  } else if ((topLeft === topMid && topLeft === topRight && (topLeft === 'O')) || //top row wins
-  (centerLeft === centerMid && centerLeft === centerRight && (centerLeft === 'O')) || //mid row wins
-  (botLeft === botMid && botLeft === botRight && (botLeft === 'O')) || // bot row wins
-  (topLeft === centerLeft && topLeft === botLeft && (topLeft === 'O')) || //left col wins
-  (topMid === centerMid && topMid === botMid && (topMid === 'O')) || //mid col wins
-  (topRight === centerRight && topRight === botRight && (topRight === 'O')) || //right col wins
-  (topLeft === centerMid && topLeft === botRight && (topLeft === 'O')) || //diagonal win
-  (topRight === centerMid && topRight === botLeft && (topRight === 'O')) //diagonal win
-  ) {
-    oWin = true;
-
-  } else { //tie logic here
-      if (((topLeft === "X") || (topLeft === "O")) && ((centerLeft === "X") ||
-      (centerLeft === "O")) && ((bOtLeft === "X") || (bOtLeft === "O")) && ((tOpMid === "X") ||
-      (tOpMid === "O")) && ((centerMid === "X") || (centerMid === "O")) && ((bOtMid === "X") ||
-      (bOtMid === "O")) && ((tOpRight === "X") || (tOpRight === "O")) && ((centerRight === "X") ||
-      (centerRight === "O")) && ((bOtRight === "X") || (bOtRight === "O"))) {
-        console.log("It's a tie!"); //use alert()?
-      }
   }
 
 };
 
 //reset board
-var resetBoard = function resetBoard() {
-  var topLeft = $('#topLeft').text(' ');
 
-  xWin = false;
-  oWin = false;
-
+var clearBoard = function clearBoard(row, col) {
+  for(var i = 0; i < gameBoard.length; i++) {
+    for(var j = 0; j < gameBoard[i].length; j++) {
+      gameBoard[i][j] = null;
+    }
+  }
 };
+
+///jQuery Logic///
 
 ///jQuery Logic///
 $(document).ready(function() {
@@ -90,5 +55,4 @@ $(document).ready(function() {
 
 //add more functions here for jQuery
 });
-
 
