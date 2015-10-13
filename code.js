@@ -2,7 +2,7 @@
 
 ///Javascript Logic///
 
-var player;
+var currentPlayer = 'X';
 var count; //counter for # of moves in game - max 9
 
 var gameBoard =
@@ -12,23 +12,14 @@ var gameBoard =
     [null, null, null]  //[2][0], [2][1], [2][2]
 ];
 
-//is there a X or O in this index
-var checkSquare = function () {
-  for(var i = 0; i < gameBoard.length; i++) {
-    for(var j = 0; i < gameBoard[i]; j++) {
-      if (gameBoard[i][j] !== null){
-        return false;
-      }
-    }
-  }
-};
-
-var changePlayer = function (){
-  if (player === 'O'){
-    player = 'X';
-  }
-  else{
-    player = 'O';
+//alternate between X and O
+var switchPlayer = function() {
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O';
+    return 'O';
+  } else {
+      currentPlayer = 'X'
+      return 'X';
   }
 };
 
@@ -53,7 +44,7 @@ var winDiag = function (player) {
 };
 
 //three in a row
-var gotThree = function gotThree(player, indexOne, indexTwo, indexThree) {
+var gotThree = function (player, indexOne, indexTwo, indexThree) {
   return (indexOne === player) && (indexTwo === player) && (indexThree === player);
 };
 
@@ -87,13 +78,13 @@ var clearBoard = function clearBoard(row, col) {
 
 $(document).ready(function() {
   //detects a click on one of the nine boxes
-  $('.box').on('click', function(event) {
-    $(this).text('X');
-
-    // console.log(event);
-    // alert('I was clicked'); //maybe an if else statement here
+  $('#board').on('click', function(event) {
+    var boxClickedOn = event.target;
+    console.log(boxClickedOn);
+    $(boxClickedOn).html(switchPlayer());
   });
 
-//add more functions here for jQuery
+
+  //add more functions here for jQuery
 });
 
