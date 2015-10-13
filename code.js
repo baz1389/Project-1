@@ -3,6 +3,7 @@
 ///Javascript Logic///
 
 var player;
+var count; //counter for # of moves in game - max 9
 
 var gameBoard =
 [
@@ -16,18 +17,18 @@ var checkSquare = function () {
   for(var i = 0; i < gameBoard.length; i++) {
     for(var j = 0; i < gameBoard[i]; j++) {
       if (gameBoard[i][j] !== null){
-        return
+        return false;
       }
     }
   }
 };
 
 var changePlayer = function (){
-  if (player === "O"){
-    player = "X";
+  if (player === 'O'){
+    player = 'X';
   }
   else{
-    player = "O";
+    player = 'O';
   }
 };
 
@@ -69,7 +70,7 @@ var getWinner = function() {
 
 //declare winner
 var winnerIs = function (player) {
-  return winsRow(player) || winsColumn(player) || winsDiagonal(player);
+  return winRow(player) || winCol(player) || winDiag(player);
 };
 
 //reset board
@@ -87,8 +88,10 @@ var clearBoard = function clearBoard(row, col) {
 $(document).ready(function() {
   //detects a click on one of the nine boxes
   $('.box').on('click', function(event) {
-    console.log(event);
-    alert('I was clicked'); //maybe an if else statement here
+    $(this).text('X');
+
+    // console.log(event);
+    // alert('I was clicked'); //maybe an if else statement here
   });
 
 //add more functions here for jQuery
