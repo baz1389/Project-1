@@ -1,9 +1,16 @@
 body {
-  background: tan;
+  background-image: url(HalloweenBackground.jpg);
+  z-index: 1;
+  background-size: cover;
 }
 
 h1 {
-  color: red;
+  color: #CF5300;
+  text-align: center;
+}
+
+.message {
+  color: #CF5300;
   text-align: center;
 }
 
@@ -16,19 +23,27 @@ h1 {
 
 .left-col {
   float: left;
-  background-color: orange;
+  background-color: #CF5300;
   text-align: center;
+  font-size: 48px;
+  line-height: 100px;
 }
 
 .middle-col{
   float: left;
-  background-color: orange;
+  background-color: #CF5300;
   text-align: center;
+  font-size: 48px;
+  line-height: 100px;
 }
 
 .right-col{
   float: left;
-  background-color: orange;
+  background-color: #CF5300;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 48px;
+  line-height: 100px;
 }
 
 .box{
@@ -41,7 +56,7 @@ h1 {
   height: 50px;
   width: 307px;
   margin: 0 auto;
-  background-color: tan;
+  background-color: black;
 }
 
 button {
@@ -60,6 +75,7 @@ button {
   position: ;
   float: left;
   position: relative; left: 10px;
+  color:#CF5300;
 }
 
 li {
