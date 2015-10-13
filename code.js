@@ -30,14 +30,18 @@ var changePlayer = function (){
 };
 
 //win by rows
-var winRow = function winRow(player) {
+var winRow = function (player) {
   return gotThree(player, gameBoard[0][0], gameBoard[0][1], gameBoard[0][2]) ||
          gotThree(player, gameBoard[1][0], gameBoard[1][1], gameBoard[1][2]) ||
          gotThree(player, gameBoard[2][0], gameBoard[2][1], gameBoard[2][2]);
 };
 
 //win by columns
-
+var winCol = function (player) {
+  return gotThree(player, gameBoard[0][0], gameBoard[1][0], gameBoard[2][0]) ||
+         gotThree(player, gameBoard[0][1], gameBoard[1][1], gameBoard[2][1]) ||
+         gotThree(player, gameBoard[0][2], gameBoard[1][2], gameBoard[2][2]);
+};
 
 //win by diagonal
 
