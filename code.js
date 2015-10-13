@@ -44,7 +44,10 @@ var winCol = function (player) {
 };
 
 //win by diagonal
-
+var winCol = function (player) {
+  return gotThree(player, gameBoard[0][0], gameBoard[1][1], gameBoard[2][2]) ||
+         gotThree(player, gameBoard[0][2], gameBoard[1][1], gameBoard[2][0]);
+};
 
 //three in a row
 
