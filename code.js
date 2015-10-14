@@ -18,7 +18,7 @@ var switchPlayer = function() {
     currentPlayer = 'O';
     return 'O';
   } else {
-      currentPlayer = 'X'
+      currentPlayer = 'X';
       return 'X';
   }
 };
@@ -74,6 +74,8 @@ var clearBoard = function clearBoard() {
       gameBoard[i][j] = null;
     }
   }
+  $('.box').html('');
+  $
 };
 
 ///jQuery///
@@ -89,7 +91,7 @@ $(document).ready(function() {
 
     $(boxClickedOn).html(switchPlayer());
     gameBoard[row][col] = currentPlayer;
-    moveCounter++;
+
 
     if(boxClickedOn) {
       //alternates message at top of board based on whose turn it is
@@ -102,20 +104,14 @@ $(document).ready(function() {
       } else {
         $('.message').html("The game is a tie!");
       }
-      $('#button').text("Play Again?");
+      $('#reset').text("Play Again?");
     }
   });
 
-  $('#button').on('click', function(event) {
-
-
-  });
-
-
+  $('#reset').click(clearBoard);
 });
 
 //need to fix
-  //if count is 9 and X or O is winner shouldnt return tie game
-  //make clearBoard() work
+  //once a game finishes, create a new game
 
 
