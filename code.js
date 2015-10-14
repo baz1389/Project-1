@@ -3,6 +3,7 @@
 ///Javascript Logic///
 
 var currentPlayer = 'O';
+var moveCounter = 0; //counter for # of moves in game - max 9
 
 var gameBoard =
 [
@@ -47,6 +48,11 @@ var gotThree = function (player, indexOne, indexTwo, indexThree) {
   return (indexOne === player) && (indexTwo === player) && (indexThree === player);
 };
 
+//determine winner
+var winnerIs = function (player) {
+  return winRow(player) || winCol(player) || winDiag(player);
+};
+
 //declare winner
 var getWinner = function() {
   if (winnerIs('X')) {
@@ -58,11 +64,6 @@ var getWinner = function() {
   return null;
 };
 
-//determine winner
-var winnerIs = function (player) {
-  return winRow(player) || winCol(player) || winDiag(player);
-};
-
 //reset board
 var clearBoard = function clearBoard(row, col) {
   for(var i = 0; i < gameBoard.length; i++) {
@@ -72,27 +73,42 @@ var clearBoard = function clearBoard(row, col) {
   }
 };
 
-
 ///jQuery///
 
 $(document).ready(function() {
 
-  var moveCounter; //counter for # of moves in game - max 9
-
   //fills a box with an X or O
-  $('#board').on('click', function(event) {
+  $('.box').one('click', function(event) {
     var boxClickedOn = event.target;
-    $(boxClickedOn).html(switchPlayer());
-      //if(boxClickedOn !== null)
+    $(this).html(switchPlayer());
+    moveCounter++;
+    if(boxClickedOn) {
+      $('.message').text('Current Player: ' + currentPlayer);
+    }
+
+    var row = boxClickedOn.dataset.row;
+    var col = boxClickedOn.dataset.col;
+    gameBoard[row][col] = currentPlayer;
+
+    if(winnerIs(currentPlayer)) {
+      $('.message').html(currentPlayer + " is the winner!");
+    }
 
   });
 
   $('#button').on('click', function() {
     var buttonClicked = event.target;
-    $(buttonClicked).html('Play Again?');
+    if(winnerIs === 'X' || winnerIs === 'O') {
+      $(buttonClicked).html('Play Again?');
+    } else {
+        $(buttonClicked).html(clearBoard());
+    }
+
   });
 
 
-  //add more functions here for jQuery
+
 });
+
+
 
