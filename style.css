@@ -18,7 +18,6 @@ h1 {
   height: 300px;
   width: 307px;
   margin: 0 auto;
-  align: center;
 }
 
 .left-col {
@@ -62,7 +61,7 @@ h1 {
 button {
   position:relative;
     top:33%;
-    left:39%;
+    left:37%;
 }
 
 .footer {
