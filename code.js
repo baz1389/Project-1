@@ -2,8 +2,7 @@
 
 ///Javascript Logic///
 
-var currentPlayer = 'X';
-var count; //counter for # of moves in game - max 9
+var currentPlayer = 'O';
 
 var gameBoard =
 [
@@ -77,12 +76,18 @@ var clearBoard = function clearBoard(row, col) {
 ///jQuery///
 
 $(document).ready(function() {
-  //detects a click on one of the nine boxes
+
+  var moveCounter; //counter for # of moves in game - max 9
+
+  //fills a box with an X or O
   $('#board').on('click', function(event) {
     var boxClickedOn = event.target;
-    console.log(boxClickedOn);
     $(boxClickedOn).html(switchPlayer());
+      //if(boxClickedOn !== null)
+
   });
+
+
 
 
   //add more functions here for jQuery
