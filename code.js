@@ -47,7 +47,7 @@ var gotThree = function (player, indexOne, indexTwo, indexThree) {
   return (indexOne === player) && (indexTwo === player) && (indexThree === player);
 };
 
-//determine winner
+//declare winner
 var getWinner = function() {
   if (winnerIs('X')) {
     return 'X';
@@ -58,7 +58,7 @@ var getWinner = function() {
   return null;
 };
 
-//declare winner
+//determine winner
 var winnerIs = function (player) {
   return winRow(player) || winCol(player) || winDiag(player);
 };
@@ -87,7 +87,10 @@ $(document).ready(function() {
 
   });
 
-
+  $('#button').on('click', function() {
+    var buttonClicked = event.target;
+    $(buttonClicked).html('Play Again?');
+  });
 
 
   //add more functions here for jQuery
