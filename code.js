@@ -61,11 +61,14 @@ var getWinner = function() {
   if (winnerIs('O')) {
     return 'O';
   }
+  if (moveCounter === 9) {
+    return 'tie';
+  }
   return null;
 };
 
 //reset board
-var clearBoard = function clearBoard(row, col) {
+var clearBoard = function clearBoard() {
   for(var i = 0; i < gameBoard.length; i++) {
     for(var j = 0; j < gameBoard[i].length; j++) {
       gameBoard[i][j] = null;
@@ -78,37 +81,41 @@ var clearBoard = function clearBoard(row, col) {
 $(document).ready(function() {
 
   //fills a box with an X or O
-  $('.box').one('click', function(event) {
+  $('.box').on('click', function(event) {
     var boxClickedOn = event.target;
-    $(this).html(switchPlayer());
+    var row = boxClickedOn.dataset.row;
+    var col = boxClickedOn.dataset.col;
+    if (gameBoard[row][col] !== null || getWinner()) {return;}
+
+    $(boxClickedOn).html(switchPlayer());
+    gameBoard[row][col] = currentPlayer;
     moveCounter++;
+
     if(boxClickedOn) {
+      //alternates message at top of board based on whose turn it is
       $('.message').text('Current Player: ' + currentPlayer);
     }
 
-    var row = boxClickedOn.dataset.row;
-    var col = boxClickedOn.dataset.col;
-    gameBoard[row][col] = currentPlayer;
-
-    if(winnerIs(currentPlayer)) {
-      $('.message').html(currentPlayer + " is the winner!");
+    if (getWinner()){
+      if(winnerIs(currentPlayer)) {
+        $('.message').html(currentPlayer + " is the winner!");
+      } else {
+        $('.message').html("The game is a tie!");
+      }
+      $('#button').text("Play Again?");
     }
-
   });
 
-  $('#button').on('click', function() {
-    var buttonClicked = event.target;
-    if(winnerIs === 'X' || winnerIs === 'O') {
-      $(buttonClicked).html('Play Again?');
-    } else {
-        $(buttonClicked).html(clearBoard());
-    }
+  $('#button').on('click', function(event) {
+
 
   });
-
 
 
 });
 
+//need to fix
+  //if count is 9 and X or O is winner shouldnt return tie game
+  //make clearBoard() work
 
 
