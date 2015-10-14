@@ -75,7 +75,7 @@ var clearBoard = function clearBoard() {
     }
   }
   $('.box').html('');
-  $
+  moveCounter = 0;
 };
 
 ///jQuery///
@@ -91,6 +91,7 @@ $(document).ready(function() {
 
     $(boxClickedOn).html(switchPlayer());
     gameBoard[row][col] = currentPlayer;
+    moveCounter++;
 
 
     if(boxClickedOn) {
