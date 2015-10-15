@@ -2,8 +2,10 @@
 
 ///Javascript Logic///
 
+var tttapi = tttapi || {};
 var currentPlayer = 'O';
 var moveCounter = 0; //counter for # of moves in game - max 9
+var token;
 
 var gameBoard =
 [
@@ -68,7 +70,7 @@ var getWinner = function() {
 };
 
 //reset board
-var clearBoard = function clearBoard() {
+var clearBoard = function () {
   for(var i = 0; i < gameBoard.length; i++) {
     for(var j = 0; j < gameBoard[i].length; j++) {
       gameBoard[i][j] = null;
@@ -76,6 +78,7 @@ var clearBoard = function clearBoard() {
   }
   $('.box').html('');
   moveCounter = 0;
+  currentPlayer = 'O';
   $('.message').css('color', '#CF5300');
   $('.message').text('Current Player: X');
 };
@@ -83,6 +86,36 @@ var clearBoard = function clearBoard() {
 ///jQuery///
 
 $(document).ready(function() {
+
+   var form2object = function(form) {
+    var data = {};
+    $(form).children().each(function(index, element) {
+      var type = $(this).attr('type');
+      if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
+        data[$(this).attr('name')] = $(this).val();
+      }
+    });
+    return data;
+  };
+  var wrap = function wrap(root, formData) {
+    var wrapper = {};
+    wrapper[root] = formData;
+    return wrapper;
+  };
+
+  $('#login').on('submit', function(e) {
+    var credentials = wrap('credentials', form2object(this));
+    var cb = function cb(error, data) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      token = data.user.token; //data is marked cells
+    };
+    e.preventDefault();
+    tttapi.login(credentials, cb);
+  });
+
 
   //fills a box with an X or O
   $('.box').on('click', function(event) {
@@ -113,7 +146,8 @@ $(document).ready(function() {
     }
   });
 
-  $('#reset').click(clearBoard);
+  $('#reset').on('click', clearBoard);
+
 });
 
 
