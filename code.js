@@ -76,6 +76,8 @@ var clearBoard = function clearBoard() {
   }
   $('.box').html('');
   moveCounter = 0;
+  $('.message').css('color', '#CF5300');
+  $('.message').text('Current Player: X');
 };
 
 ///jQuery///
@@ -102,17 +104,16 @@ $(document).ready(function() {
     if (getWinner()){
       if(winnerIs(currentPlayer)) {
         $('.message').html(currentPlayer + " is the winner!");
+        $('.message').css('color', 'green')
       } else {
         $('.message').html("The game is a tie!");
       }
       $('#reset').text("Play Again?");
+      $('.message').css('color', 'green')
     }
   });
 
   $('#reset').click(clearBoard);
 });
-
-//need to fix
-  //once a game finishes, create a new game
 
 
