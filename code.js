@@ -6,6 +6,7 @@ var tttapi = tttapi || {};
 var currentPlayer = 'O';
 var moveCounter = 0; //counter for # of moves in game - max 9
 var token;
+var board_new = [];
 
 var gameBoard =
 [
@@ -87,34 +88,37 @@ var clearBoard = function () {
 
 $(document).ready(function() {
 
-   var form2object = function(form) {
-    var data = {};
-    $(form).children().each(function(index, element) {
-      var type = $(this).attr('type');
-      if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
-        data[$(this).attr('name')] = $(this).val();
-      }
-    });
-    return data;
-  };
-  var wrap = function wrap(root, formData) {
-    var wrapper = {};
-    wrapper[root] = formData;
-    return wrapper;
-  };
+  //  var form2object = function(form) {
+  //   var data = {};
+  //   $(form).children().each(function(index, element) {
+  //     var type = $(this).attr('type');
+  //     if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
+  //       data[$(this).attr('name')] = $(this).val();
+  //     }
+  //   });
+  //   return data;
+  // };
+  // var wrap = function wrap(root, formData) {
+  //   var wrapper = {};
+  //   wrapper[root] = formData;
+  //   return wrapper;
+  // }; // {"credentials" : {"email" : , "password": }}
 
-  $('#login').on('submit', function(e) {
-    var credentials = wrap('credentials', form2object(this));
-    var cb = function cb(error, data) {
-      if (error) {
-        console.error(error);
-        return;
-      }
-      token = data.user.token; //data is marked cells
-    };
-    e.preventDefault();
-    tttapi.login(credentials, cb);
-  });
+  // $('#login').on('submit', function(e) {
+  //   var credentials = wrap('credentials', form2object(this));
+  //   console.log(credentials);
+  //   var logincb = function logincb(error, data) {
+  //     if (error) {
+  //       console.error(error);
+  //       return;
+  //     }
+  //     console.log(JSON.stringify(data));
+  //     $('#result').val(JSON.stringify(data, null, 4));
+  //     token = data.user.token; //data is marked cells
+  //   };
+  //   e.preventDefault();
+  //   tttapi.login(credentials, logincb);
+  // });
 
 
   //fills a box with an X or O
@@ -127,6 +131,25 @@ $(document).ready(function() {
     $(boxClickedOn).html(switchPlayer());
     gameBoard[row][col] = currentPlayer;
     moveCounter++;
+
+    // tttapi.markCell(game.id,
+    //       {
+    //         "game": {
+    //           "cell": {
+    //             "index": "1",
+    //             "value": "x"
+    //           }
+    //         }
+    //       }, token,
+
+
+
+
+
+
+    //   data, token, function() {
+
+    // });
 
 
     if(boxClickedOn) {
@@ -144,10 +167,14 @@ $(document).ready(function() {
       $('#reset').text("Play Again?");
       $('.message').css('color', 'green')
     }
+
   });
 
   $('#reset').on('click', clearBoard);
+  //create game
+  // tttapi.createGame(token, callback)
 
 });
 
 
+//create, mark, show if we can
