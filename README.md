@@ -1,4 +1,4 @@
-This is a simple two-player game of tic-tac-toe.
+This is a simple two-player game of tic-tac-toe. X goes before O. To win you must get 3 X's or O's in a row.
 
 
 Technologies Used:
@@ -21,7 +21,12 @@ Unsolved Problems:
 The "Current Player: X/O" text at the top of the board only shows whose turn it is once a click is registered on the board (i.e if it is X's turn the message will still show current player as O and as soon as the click occurs [places an X on the board] it will show that the current player is X).
 
 
+I ran out of time to make the site look aesthetically pleasing. Not very happy with how the site currently looks.
+
+
 Wireframes:
+
+https://github.com/baz1389/Project-1/blob/version1/ttt_wireframe.png
 
 
 User Stories:
