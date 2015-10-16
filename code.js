@@ -101,24 +101,22 @@ $(document).ready(function() {
     var row = boxClickedOn.dataset.row;
     var col = boxClickedOn.dataset.col;
     if (gameBoard[row][col] !== null || getWinner()) {return;}
+      var player = switchPlayer();
+      $(boxClickedOn).html(player);
 
-    $(boxClickedOn).html(switchPlayer());
-    gameBoard[row][col] = currentPlayer;
-    moveCounter++;
+      var cellData = {
+        game: {
+          cell: {
+            index: (parseInt(row) * 3) + parseInt(col),
+            value: player
+          }
+        }
+      };
 
-    // tttapi.markCell(game.id,
-    //       {
-    //         "game": {
-    //           "cell": {
-    //             "index": "1",
-    //             "value": "x"
-    //           }
-    //         }
-    //       },
-    //       token, function() {
+      tttapi.markCell(gameId, cellData, token, callback);
 
-    // });
-
+      gameBoard[row][col] = currentPlayer;
+      moveCounter++;
 
     if(boxClickedOn) {
       //alternates message at top of board based on whose turn it is

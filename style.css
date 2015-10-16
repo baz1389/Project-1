@@ -25,8 +25,8 @@ h1 {
   background-color: black;
   position: absolute;
   top: 13%;
-  margin-left: 29%;
-  width: 450px;
+  margin-left: 5%;
+  width: 300px;
   height: 400px;
   z-index: 10;
   border: 2px solid #CF5300;
@@ -103,13 +103,3 @@ li {
   position: relative; right: 48px;
 }
 
-.hide {
-  display: none;
-  margin: 0 auto;
-
-
-}
-
-.project {
-  display: block;
-}

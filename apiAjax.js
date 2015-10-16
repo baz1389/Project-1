@@ -1,4 +1,6 @@
 'use strict';
+var callback, gameId;
+
 var tttapi = {
   gameWatcher: null,
   ttt: 'http://ttt.wdibos.com',
@@ -122,7 +124,7 @@ $(function() {
     return wrapper;
   };
 
-  var callback = function callback(error, data) {
+  callback = function callback(error, data) {
     if (error) {
       console.error(error);
       $('#result').val('status: ' + error.status + ', error: ' +error.error);
@@ -162,7 +164,10 @@ $(function() {
   $('#create-game').on('submit', function(e) {
     var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.createGame(token, callback);
+    tttapi.createGame(token, function(err, data){
+      gameId = data.game.id;
+      $('#result').val(JSON.stringify(data, null, 4));
+    });
   });
 
   $('#show-game').on('submit', function(e) {
