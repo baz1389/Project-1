@@ -2,11 +2,10 @@
 
 ///Javascript Logic///
 
-var tttapi = tttapi || {};
 var currentPlayer = 'O';
 var moveCounter = 0; //counter for # of moves in game - max 9
-var token;
-var board_new = [];
+var token; //user token once logged in
+var board_new = []; //creates a 1D array for API
 
 var gameBoard =
 [
@@ -88,38 +87,13 @@ var clearBoard = function () {
 
 $(document).ready(function() {
 
-  //  var form2object = function(form) {
-  //   var data = {};
-  //   $(form).children().each(function(index, element) {
-  //     var type = $(this).attr('type');
-  //     if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
-  //       data[$(this).attr('name')] = $(this).val();
-  //     }
-  //   });
-  //   return data;
-  // };
-  // var wrap = function wrap(root, formData) {
-  //   var wrapper = {};
-  //   wrapper[root] = formData;
-  //   return wrapper;
-  // }; // {"credentials" : {"email" : , "password": }}
+  $('.remove').on('click', function() {
+    $('#api').addClass('hide');
+  });
 
-  // $('#login').on('submit', function(e) {
-  //   var credentials = wrap('credentials', form2object(this));
-  //   console.log(credentials);
-  //   var logincb = function logincb(error, data) {
-  //     if (error) {
-  //       console.error(error);
-  //       return;
-  //     }
-  //     console.log(JSON.stringify(data));
-  //     $('#result').val(JSON.stringify(data, null, 4));
-  //     token = data.user.token; //data is marked cells
-  //   };
-  //   e.preventDefault();
-  //   tttapi.login(credentials, logincb);
-  // });
-
+  $('.show').on('click', function() {
+    $('#api').removeClass('show');
+  });
 
   //fills a box with an X or O
   $('.box').on('click', function(event) {
@@ -140,14 +114,8 @@ $(document).ready(function() {
     //             "value": "x"
     //           }
     //         }
-    //       }, token,
-
-
-
-
-
-
-    //   data, token, function() {
+    //       },
+    //       token, function() {
 
     // });
 
@@ -171,10 +139,6 @@ $(document).ready(function() {
   });
 
   $('#reset').on('click', clearBoard);
-  //create game
-  // tttapi.createGame(token, callback)
 
 });
 
-
-//create, mark, show if we can

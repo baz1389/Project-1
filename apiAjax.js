@@ -170,7 +170,8 @@ $(function() {
     var id = $('#show-id').val();
     e.preventDefault();
     tttapi.showGame(id, token, function(err, data){
-
+    board_new = [];
+    //turns 2D into 1D array
     while(data.game.cells.length) board_new.push(data.game.cells.splice(0,3));
     console.log(board_new);
     });

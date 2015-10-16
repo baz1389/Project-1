@@ -18,6 +18,24 @@ h1 {
   height: 300px;
   width: 307px;
   margin: 0 auto;
+  z-index: 5;
+}
+
+#api {
+  background-color: black;
+  position: absolute;
+  top: 13%;
+  margin-left: 29%;
+  width: 450px;
+  height: 400px;
+  z-index: 10;
+  border: 2px solid #CF5300;
+  color: #CF5300;
+}
+
+#result {
+  width: 250px;
+  height: 100px;
 }
 
 .left-col {
@@ -60,8 +78,8 @@ h1 {
 
 button {
   position:relative;
-    top:33%;
-    left:37%;
+  top:33%;
+  left:37%;
 }
 
 .footer {
@@ -83,4 +101,15 @@ li {
   display: inline;
   padding: 1px;
   position: relative; right: 48px;
+}
+
+.hide {
+  display: none;
+  margin: 0 auto;
+
+
+}
+
+.project {
+  display: block;
 }
